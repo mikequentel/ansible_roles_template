@@ -1,0 +1,16 @@
+---
+
+- name: roles_path
+  set_fact:
+    roles_path: "roles"
+    when: roles_path is undefined
+
+- name: app_name
+  set_fact:
+    app_name: "@@APP_NAME"
+
+- name: echo_roles_path
+  command: echo {{roles_path}}
+  register: output_echo_roles_path
+
+- debug: var=output_echo_roles_path.stdout

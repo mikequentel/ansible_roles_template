@@ -1,0 +1,7 @@
+---
+# Top-level Playbook
+
+- hosts: dev_servers
+  connection: local
+  roles:
+    - role1
