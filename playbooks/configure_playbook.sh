@@ -131,13 +131,11 @@ for i in `find . -type f`; do
     cp -fv ${i} `echo ${i} | sed "s/playbook1\.yml/$PLAYBOOK_NAME\.yml/"`
     grep "role1" $PLAYBOOK_NAME.yml
     if [ "$?" -eq "0" ]; then
-      sed -i "s/role1/$ROLL_NAME/g" $PLAYBOOK_NAME.yml
+      sed -i "s/role1/${ROLE_NAME}/g" $PLAYBOOK_NAME.yml
     fi
   fi
 done
 
-for i in `find . -type d`; do
-  if [ "${i}" == "./roles/role1" ]; then
-    cp -fvr ${i} roles/$ROLE_NAME
-  fi
-done
+if [ -d roles/role1 ]; then
+  cp -fvr roles/role1 roles/$ROLE_NAME
+fi
